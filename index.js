@@ -104,6 +104,27 @@ tile.forEach(move => {
                 token = "X"
             }
 
+            if (start.addEventListener("click",(event) => {
+                console.log("Initialize...");
+            
+                lastMove="";
+                movesLeft = 9;
+                p1MovesLeft = 5;
+                p2MovesLeft = 4;
+                token="X";
+                position = "";
+                isGameOver = false;
+                t1.innerText="1";
+                t2.innerText="2";
+                t3.innerText="3";
+                t4.innerText="4";
+                t5.innerText="5";
+                t6.innerText="6";
+                t7.innerText="7";
+                t8.innerText="8";
+                t9.innerText="9";  
+            }));
+
             // console.log ("--- CHECK VALUES AT END OF LOOP ---")
             // console.log(`token = ${token}`);
             // console.log (`movesLeft = ${movesLeft}`);
