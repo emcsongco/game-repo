@@ -1,44 +1,8 @@
-const winningCombo = [
-    [1,2,3], 
-    [4,5,6], 
-    [7,8,9],
-    [1,4,7],
-    [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7]
-];
-
-const moves = [
-    {"1":"1",
-    "2":"2",
-    "3":"3",
-    "4":"4",
-    "5":"5",
-    "6":"6",
-    "7":"7",
-    "8":"8",
-    "9":"9"}
-];
-
-const entries = Object.entries(moves);
-const values = Object.values(moves);
-const keys = Object.keys(moves);
-
-// console.log(winningCombo);
-// console.log(entries);
-// console.log(values);
-// console.log(keys);
-
 console.log("Grab elements...");
 
 const tiles = document.querySelectorAll(".tiles");
 const start = document.querySelector(".start-button");
 const tile = document.querySelectorAll(".tile");
-
-// console.log(tiles);
-// console.log(tiles.innerHTML);
-// console.log(start);
 
 const t1 = document.getElementById("1-1");
 const t2 = document.getElementById("1-2");
@@ -97,7 +61,6 @@ tile.forEach(move => {
                 console.log ("Check # of X moves left...")
                 p1MovesLeft --;
                 token = "O";
-
             } else {
                 console.log ("Check O of moves left...")
                 p2MovesLeft --;
@@ -105,8 +68,7 @@ tile.forEach(move => {
             }
 
             if (start.addEventListener("click",(event) => {
-                console.log("Initialize...");
-            
+                console.log("Re-starting board...");
                 lastMove="";
                 movesLeft = 9;
                 p1MovesLeft = 5;
@@ -125,6 +87,32 @@ tile.forEach(move => {
                 t9.innerText="9";  
             }));
 
+            if (movesLeft < 5) {
+                if ((t1.innerText==="X" && t2.innerText==="X" && t3.innerText==="X") || (t1.innerText==="O" && t2.innerText==="O" && t3.innerText==="O")) {
+                    alert ("We have a winner in position 1-2-3!");
+                }
+                if ((t4.innerText==="X" && t5.innerText==="X" && t6.innerText=="X") || (t4.innerText==="O" && t5.innerText==="O" && t6.innerText==="O")) {
+                    alert ("We have a winner in position 4-5-6!");
+                }
+                if ((t7.innerText==="X" && t8.innerText==="X" && t9.innerText==="X") || (t7.innerText==="O" && t8.innerText==="O" && t9.innerText==="O")) {
+                    alert ("We have a winner in position 7-8-9!");
+                } 
+                if ((t1.innerText==="X" && t4.innerText==="X" && t7.innerText==="X") || (t1.innerText==="O" && t4.innerText==="O" && t7.innerText==="O")) {
+                    alert ("We have a winner in position 1-4-7!");
+                }
+                if ((t2.innerText==="X" && t5.innerText==="X" && t8.innerText==="X") || (t2.innerText==="O" && t5.innerText==="O" && t8.innerText==="O")) {
+                    alert ("We have a winner in position 2-5-8!");
+                }
+                if ((t3.innerText==="X" && t6.innerText==="X" && t9.innerText==="X") || (t3.innerText==="O" && t6.innerText==="O" && t9.innerText==="O")) {
+                    alert ("We have a winner in position 3-6-9!");
+                }
+                if ((t1.innerText==="X" && t5.innerText==="X" && t9.innerText==="X") || (t1.innerText==="O" && t5.innerText==="O" && t9.innerText==="O")) {
+                    alert ("We have a winner in position 1-5-9!");
+                }
+                if ((t3.innerText==="X" && t5.innerText==="X" && t7.innerText==="X") || (t3.innerText==="O" && t5.innerText==="O" && t7.innerText==="O")) {
+                    alert ("We have a winner in position 3-5-7!");
+                }
+            }
             // console.log ("--- CHECK VALUES AT END OF LOOP ---")
             // console.log(`token = ${token}`);
             // console.log (`movesLeft = ${movesLeft}`);
@@ -132,7 +120,6 @@ tile.forEach(move => {
             // console.log (`p2MovesLeft = ${p2MovesLeft}`);
             // console.log (`move.innerHTML = ${move.innerHTML}`);
             // console.log(`Is Game Over? = ${isGameOver}`);
-        }
 
         if (movesLeft == 0 && p1MovesLeft == 0 && p2MovesLeft == 0) {
             isGameOver = true;
@@ -143,7 +130,7 @@ tile.forEach(move => {
             tiles.innerHTML = `<button disabled>`;
             
             if (start.addEventListener("click",(event) => {
-                console.log("Initialize...");
+                console.log("Re-setting board...");
             
                 lastMove="";
                 movesLeft = 9;
@@ -163,10 +150,5 @@ tile.forEach(move => {
                 t9.innerText="9";  
             }));
 
-            
         }
-    })
-});
-
-
-
+    }})});
