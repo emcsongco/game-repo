@@ -50,15 +50,15 @@ const t7 = document.getElementById("3-1");
 const t8 = document.getElementById("3-2");
 const t9 = document.getElementById("3-3");
 
-console.log (t1.innerText);
-console.log (t2.innerText);
-console.log (t3.innerText);
-console.log (t4.innerText);
-console.log (t5.innerText);
-console.log (t6.innerText);
-console.log (t7.innerText);
-console.log (t8.innerText);
-console.log (t9.innerText);
+// console.log (t1.innerText);
+// console.log (t2.innerText);
+// console.log (t3.innerText);
+// console.log (t4.innerText);
+// console.log (t5.innerText);
+// console.log (t6.innerText);
+// console.log (t7.innerText);
+// console.log (t8.innerText);
+// console.log (t9.innerText);
 
 console.log("Initialize...");
 
@@ -68,6 +68,7 @@ let p1MovesLeft = 5;
 let p2MovesLeft = 4;
 let token="X";
 let position = "";
+let isGameOver = false;
 
 console.log("Start Game Play");
 
@@ -80,53 +81,71 @@ console.log (`token = ${token}`);
 
 console.log ("Game in progress...");
 
-
 tile.forEach(move => {
+
     move.addEventListener("click", (event) => {
         event.preventDefault();
+        start.innerHTML = "Re-start game?"
         position = move.innerHTML;
-        // console.log (`position = ${position}`);
-        // move.innerHTML = token;
-        // console.log (`move.innerHTML = ${move.innerHTML}`);
-        // if position == "
+
         if (movesLeft > 0) {
+            console.log ("Check # of moves left...")
             move.innerHTML = token;
+            movesLeft --;
+
             if (token === "X") {
+                console.log ("Check # of X moves left...")
                 p1MovesLeft --;
                 token = "O";
+
             } else {
+                console.log ("Check O of moves left...")
                 p2MovesLeft --;
                 token = "X"
             }
-            start.innerHTML = "Re-start game?"
-            movesLeft --;
-            console.log(token);
-            console.log (`movesLeft = ${movesLeft}`);
-            console.log (`p1MovesLeft = ${p1MovesLeft}`);
-            console.log (`p2MovesLeft = ${p2MovesLeft}`);
-            console.log (`move.innerHTML = ${move.innerHTML}`);
+
+            // console.log ("--- CHECK VALUES AT END OF LOOP ---")
+            // console.log(`token = ${token}`);
+            // console.log (`movesLeft = ${movesLeft}`);
+            // console.log (`p1MovesLeft = ${p1MovesLeft}`);
+            // console.log (`p2MovesLeft = ${p2MovesLeft}`);
+            // console.log (`move.innerHTML = ${move.innerHTML}`);
+            // console.log(`Is Game Over? = ${isGameOver}`);
         }
-        if (movesLeft==0 && p1MovesLeft==0 && p2MovesLeft==0) {
-            token = move.innerHTML;
-            // console.log("Game Over! Thanks for playing!");
-            console.log (move.innerHTML);
-            alert ("Game Over! Thanks for playing!");
-            start.innerHTML = "Play again?"
-            // if onclick.start {
-            //     lastMove="";
-            //     movesLeft = 9;
-            //     p1MovesLeft = 5;
-            //     p2MovesLeft = 4;
-            //     token="X";
-            //     position = "";
-            // }
-            tiles.disabled;
-            event.disabled;
-            return;
 
-            // if (onclick.start) {
-            //     console.log("Re-start button clicked!");
-            }
+        if (movesLeft == 0 && p1MovesLeft == 0 && p2MovesLeft == 0) {
+            isGameOver = true;
+            console.log(`Is Game Over? = ${isGameOver}`);
+            // move.textContent = move.innerHTML;
+            console.log ("Proceed to last move check");
+            start.innerHTML = "Play again?";
+            tiles.innerHTML = `<button disabled>`;
+            
+            if (start.addEventListener("click",(event) => {
+                console.log("Initialize...");
+            
+                lastMove="";
+                movesLeft = 9;
+                p1MovesLeft = 5;
+                p2MovesLeft = 4;
+                token="X";
+                position = "";
+                isGameOver = false;
+                t1.innerText="1";
+                t2.innerText="2";
+                t3.innerText="3";
+                t4.innerText="4";
+                t5.innerText="5";
+                t6.innerText="6";
+                t7.innerText="7";
+                t8.innerText="8";
+                t9.innerText="9";  
+            }));
 
-    })     
+            
+        }
+    })
 });
+
+
+
