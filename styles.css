@@ -12,12 +12,27 @@ h1 {
   padding: 25px;
 }
 
-main {
+.player-container {
+  background-color: aquamarine;
+  padding: 10px;
+}
+.player-container .player-container__option {
+  background-color: #4A306D;
+  color: whitesmoke;
+  width: 125px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.player-container .player-container__option:hover {
+  background-color: #0E273C;
+}
+
+.container {
   width: 350px;
   margin: auto;
   padding: 5px;
 }
-main .tiles {
+.container__tiles {
   background-color: #A167A5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,20 +44,20 @@ main .tiles {
   padding: 5px;
   border: 1px solid #4A306D;
 }
-main .tiles div {
+.container__tiles div {
   box-shadow: 2px 2px #0E273C;
   background-color: #E8D7F1;
   height: 110px;
 }
-main .tiles .tile {
+.container__tiles .tile {
   color: #A167A5;
   font-size: 80px;
 }
-main .tiles .tile i {
+.container__tiles .tile i {
   text-shadow: 4px 4px #0E273C;
   padding: 10px;
 }
-main .start-button {
+.container .start-button {
   background-color: #E8D7F1;
   border: 1px solid #0E273C;
   padding: 10px;

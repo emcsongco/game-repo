@@ -19,12 +19,30 @@ h1 {
     color: $color-shadow;
     padding: 25px;
 }
+
+.player-container {
+    background-color: aquamarine;
+    padding: 10px;
+
+    .player-container__option {
+        background-color:#4A306D;
+        color: whitesmoke;
+        width: 125px;
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    .player-container__option:hover {
+        background-color:#0E273C;
+    }
+    
+}
   
-main {
+.container {
     width:350px;
     margin:auto;
     padding:5px;
-    .tiles {
+    &__tiles {
         background-color: $color-background;
         display:grid;
         grid-template-columns: repeat(3,1fr);

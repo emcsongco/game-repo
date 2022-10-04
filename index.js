@@ -3,6 +3,7 @@ console.log("Grab elements...");
 const tiles = document.querySelectorAll(".tiles");
 const start = document.querySelector(".start-button");
 const tile = document.querySelectorAll(".tile");
+const choiceBox = document.querySelector(".player-container");
 
 const t1 = document.getElementById("1-1");
 const t2 = document.getElementById("1-2");
@@ -13,8 +14,6 @@ const t6 = document.getElementById("2-3");
 const t7 = document.getElementById("3-1");
 const t8 = document.getElementById("3-2");
 const t9 = document.getElementById("3-3");
-
-
 
 console.log("Initialize...");
 // -----------------------------------------------------
@@ -29,7 +28,6 @@ let isGameOver = false;
 const tokenX = `<i class="fa-solid fa-x"></i>`
 const tokenO = `<i class="fa-solid fa-o"></i>`
 
-
 console.log("Start Game Play");
 // -----------------------------------------------------
 
@@ -39,6 +37,25 @@ console.log(`movesLeft = ${movesLeft}`);
 console.log(`p1movesLeft = ${p1MovesLeft}`);
 console.log(`p2MovesLeft = ${p2MovesLeft}`);
 console.log(`token = ${token}`);
+
+const getRandomInt = (min,max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+// console.log (getRandomInt(1,10));
+
+choiceBox.innerHTML = `
+  <button class="player-container__option">Player ${tokenX}</button>
+  <button class="player-container__option">Player ${tokenO}</button>
+`
+
+
+// const btn = document.querySelector(".player-container__option");
+
+// btn.addEventListener("click", (event) => {
+//   // start.innerHTML=Text.blink;
+// });
 
 
 console.log("Game in progress...");
@@ -71,7 +88,8 @@ tile.forEach((move) => {
         p2MovesLeft--;
         token = `<i class="fa-solid fa-x"></i>`;
       }
-      
+      // document.getElementById("demo").innerHTML = Math.floor(Math.random() * 10);
+      getRandomInt(1,9);
 
       // RESTART BOARD AT ANY TIME
       // -----------------------------------------------------
@@ -175,7 +193,7 @@ tile.forEach((move) => {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 3-5-7!");
         }
-        tiles.innerHTML = `<button disabled>`;
+        
       }
       // console.log ("--- CHECK VALUES AT END OF LOOP ---")
       console.log(`token = ${token}`);
