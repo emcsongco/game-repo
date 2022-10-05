@@ -68,8 +68,11 @@ const checkWinningCombo = (position) => {
     } else {
       alert ("Player O Wins!")
     }
+    isGameOver = true;
   }
 }
+
+
 
 console.log("Ready to play!");
 // -----------------------------------------------------
@@ -79,7 +82,7 @@ tile.forEach((move) => {
     position = move.innerHTML;
 
     // CHECK MOVES LEFT THROUGHOUT GAME PLAY
-    if (movesLeft > 0) {
+    if (movesLeft > 0 && !isGameOver) {
       console.log("Check # of moves left...");
       move.innerHTML = token;
       movesLeft--;
@@ -128,8 +131,7 @@ tile.forEach((move) => {
         console.log(`Is Game Over? = ${isGameOver}`);
         console.log("Proceed to last move check");
 
-        if (
-          start.addEventListener("click", (event) => {
+        if (start.addEventListener("click", (event) => {
             console.log("Re-setting board...");
             initializeBoard();
           })
