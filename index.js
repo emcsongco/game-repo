@@ -58,6 +58,7 @@ tile.forEach((move) => {
       console.log("Check # of moves left...");
       move.innerHTML = token;
       movesLeft--;
+      position = move.innerHTML;
 
 
     // CHECK TOKEN MOVEMENTS THROUGHOUT GAME PLAY
@@ -98,85 +99,41 @@ tile.forEach((move) => {
         })
       );
       
-      
       // CHECK MOVES AGAINST WINNING COMBINATIONS
       // -----------------------------------------------------
-
-      if (movesLeft < 5) {
+      if (position===tokenX) {
         if (
-          (t1.innerHTML === tokenX &&
-            t2.innerHTML === tokenX &&
-            t3.innerHTML === tokenX) ||
-          (t1.innerHTML === tokenO && t2.innerHTML === tokenO && t3.innerHTML === tokenO)
+          ((t1.innerHTML === tokenX && t2.innerHTML === tokenX && t3.innerHTML === tokenX) ||
+          (t4.innerHTML === tokenX && t5.innerHTML === tokenX && t6.innerHTML === tokenX) ||
+          (t7.innerHTML === tokenX && t8.innerHTML === tokenX && t9.innerHTML === tokenX) ||
+          (t1.innerHTML === tokenX && t4.innerHTML === tokenX && t7.innerHTML === tokenX) ||
+          (t2.innerHTML === tokenX && t5.innerHTML === tokenX && t8.innerHTML === tokenX) ||
+          (t3.innerHTML === tokenX && t6.innerHTML === tokenX && t9.innerHTML === tokenX) ||
+          (t3.innerHTML === tokenX && t5.innerHTML === tokenX && t7.innerHTML === tokenX) ||
+          (t1.innerHTML === tokenX && t5.innerHTML === tokenX && t9.innerHTML === tokenX))
         ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 1-2-3!");
+          alert("Player X Wins!");
         }
-        if (
-          (t4.innerHTML === tokenX && t5.innerHTML === tokenX && t6.innerHTML === tokenX)||
-          (t4.innerHTML === tokenO && t5.innerHTML === tokenO && t6.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 4-5-6!");
-        }
-        if (
-          (t7.innerHTML === tokenX &&
-            t8.innerHTML === tokenX &&
-            t9.innerHTML === tokenX) ||
-          (t7.innerHTML === tokenO && t8.innerHTML === tokenO && t9.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 7-8-9!");
-        }
-        if (
-          (t1.innerHTML === tokenX &&
-            t4.innerHTML === tokenX &&
-            t7.innerHTML === tokenX) ||
-          (t1.innerHTML === tokenO && t4.innerHTML === tokenO && t7.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 1-4-7!");
-        }
-        if (
-          (t2.innerHTML === tokenX &&
-            t5.innerHTML === tokenX &&
-            t8.innerHTML === tokenX) ||
-          (t2.innerHTML === tokenO && t5.innerHTML === tokenO && t8.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 2-5-8!");
-        }
-        if (
-          (t3.innerHTML === tokenX &&
-            t6.innerHTML === tokenX &&
-            t9.innerHTML === tokenX) ||
-          (t3.innerHTML === tokenO && t6.innerHTML === tokenO && t9.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 3-6-9!");
-        }
-        if (
-          (t1.innerHTML === tokenX &&
-            t5.innerHTML === tokenX &&
-            t9.innerHTML === tokenX) ||
-          (t1.innerHTML === tokenO && t5.innerHTML === tokenO && t9.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 1-5-9!");
-        }
-        if (
-          (t3.innerHTML === tokenX &&
-            t5.innerHTML === tokenX &&
-            t7.innerHTML === tokenX) ||
-          (t3.innerHTML === tokenO && t5.innerHTML === tokenO && t7.innerHTML === tokenO)
-        ) {
-          tiles.innerHTML = `<button disabled>`;
-          alert("We have a winner in position 3-5-7!");
-        }
-        
       }
+      if (position===tokenO) {
+        if (
+          ((t1.innerHTML === tokenO && t2.innerHTML === tokenO && t3.innerHTML === tokenO) ||
+          (t4.innerHTML === tokenO && t5.innerHTML === tokenO && t6.innerHTML === tokenO) ||
+          (t7.innerHTML === tokenO && t8.innerHTML === tokenO && t9.innerHTML === tokenO) ||
+          (t1.innerHTML === tokenO && t4.innerHTML === tokenO && t7.innerHTML === tokenO) ||
+          (t2.innerHTML === tokenO && t5.innerHTML === tokenO && t8.innerHTML === tokenO) ||
+          (t3.innerHTML === tokenO && t6.innerHTML === tokenO && t9.innerHTML === tokenO) ||
+          (t3.innerHTML === tokenO && t5.innerHTML === tokenO && t7.innerHTML === tokenO) ||
+          (t1.innerHTML === tokenO && t5.innerHTML === tokenO && t9.innerHTML === tokenO))
+        ) {
+          alert("Player O Wins!");
+        }
+      }
+
       // console.log ("--- CHECK VALUES AT END OF LOOP ---")
       console.log(`token = ${token}`);
+      console.log(`lastMove = ${lastMove}`);
+      console.log(`position = ${position}`);
       console.log (`movesLeft = ${movesLeft}`);
       console.log (`p1MovesLeft = ${p1MovesLeft}`);
       console.log (`p2MovesLeft = ${p2MovesLeft}`);
