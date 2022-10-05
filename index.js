@@ -34,24 +34,42 @@ console.log("Start Game Play");
     console.log(`p2MovesLeft = ${p2MovesLeft}`);
     console.log(`token = ${token}`);
 
-    const initializeBoard = () => {
-      lastMove = "";
-      movesLeft = 9;
-      p1MovesLeft = 5;
-      p2MovesLeft = 4;
-      token = tokenX;
-      position = "";
-      isGameOver = false;
-      t1.innerHTML = `<i class="empty"></i>`;
-      t2.innerHTML = `<i class="empty"></i>`;
-      t3.innerHTML = `<i class="empty"></i>`;
-      t4.innerHTML = `<i class="empty"></i>`;
-      t5.innerHTML = `<i class="empty"></i>`;
-      t6.innerHTML = `<i class="empty"></i>`;
-      t7.innerHTML = `<i class="empty"></i>`;
-      t8.innerHTML = `<i class="empty"></i>`;
-      t9.innerHTML = `<i class="empty"></i>`;
+const initializeBoard = () => {
+    lastMove = "";
+    movesLeft = 9;
+    p1MovesLeft = 5;
+    p2MovesLeft = 4;
+    token = tokenX;
+    position = "";
+    isGameOver = false;
+    t1.innerHTML = `<i class="empty"></i>`;
+    t2.innerHTML = `<i class="empty"></i>`;
+    t3.innerHTML = `<i class="empty"></i>`;
+    t4.innerHTML = `<i class="empty"></i>`;
+    t5.innerHTML = `<i class="empty"></i>`;
+    t6.innerHTML = `<i class="empty"></i>`;
+    t7.innerHTML = `<i class="empty"></i>`;
+    t8.innerHTML = `<i class="empty"></i>`;
+    t9.innerHTML = `<i class="empty"></i>`;
+}
+
+const checkWinningCombo = (position) => {
+  if (
+    ((t1.innerHTML === position && t2.innerHTML === position && t3.innerHTML === position) ||
+    (t4.innerHTML === position && t5.innerHTML === position && t6.innerHTML === position) ||
+    (t7.innerHTML === position && t8.innerHTML === position && t9.innerHTML === position) ||
+    (t1.innerHTML === position && t4.innerHTML === position && t7.innerHTML === position) ||
+    (t2.innerHTML === position && t5.innerHTML === position && t8.innerHTML === position) ||
+    (t3.innerHTML === position && t6.innerHTML === position && t9.innerHTML === position) ||
+    (t3.innerHTML === position && t5.innerHTML === position && t7.innerHTML === position) ||
+    (t1.innerHTML === position && t5.innerHTML === position && t9.innerHTML === position))
+  ) { if (position === tokenX) {
+      alert ("Player X Wins!")
+    } else {
+      alert ("Player O Wins!")
     }
+  }
+}
 
 console.log("Ready to play!");
 // -----------------------------------------------------
@@ -85,36 +103,13 @@ tile.forEach((move) => {
           initializeBoard();
         })
       );
-      
+
       // CHECK MOVES AGAINST WINNING COMBINATIONS
       if (position===tokenX) {
-        if (
-          ((t1.innerHTML === tokenX && t2.innerHTML === tokenX && t3.innerHTML === tokenX) ||
-          (t4.innerHTML === tokenX && t5.innerHTML === tokenX && t6.innerHTML === tokenX) ||
-          (t7.innerHTML === tokenX && t8.innerHTML === tokenX && t9.innerHTML === tokenX) ||
-          (t1.innerHTML === tokenX && t4.innerHTML === tokenX && t7.innerHTML === tokenX) ||
-          (t2.innerHTML === tokenX && t5.innerHTML === tokenX && t8.innerHTML === tokenX) ||
-          (t3.innerHTML === tokenX && t6.innerHTML === tokenX && t9.innerHTML === tokenX) ||
-          (t3.innerHTML === tokenX && t5.innerHTML === tokenX && t7.innerHTML === tokenX) ||
-          (t1.innerHTML === tokenX && t5.innerHTML === tokenX && t9.innerHTML === tokenX))
-        ) {
-          alert("Player X Wins!");
-        }
-      }
-      if (position===tokenO) {
-        if (
-          ((t1.innerHTML === tokenO && t2.innerHTML === tokenO && t3.innerHTML === tokenO) ||
-          (t4.innerHTML === tokenO && t5.innerHTML === tokenO && t6.innerHTML === tokenO) ||
-          (t7.innerHTML === tokenO && t8.innerHTML === tokenO && t9.innerHTML === tokenO) ||
-          (t1.innerHTML === tokenO && t4.innerHTML === tokenO && t7.innerHTML === tokenO) ||
-          (t2.innerHTML === tokenO && t5.innerHTML === tokenO && t8.innerHTML === tokenO) ||
-          (t3.innerHTML === tokenO && t6.innerHTML === tokenO && t9.innerHTML === tokenO) ||
-          (t3.innerHTML === tokenO && t5.innerHTML === tokenO && t7.innerHTML === tokenO) ||
-          (t1.innerHTML === tokenO && t5.innerHTML === tokenO && t9.innerHTML === tokenO))
-        ) {
-          alert("Player O Wins!");
-        }
-      }
+        checkWinningCombo(tokenX);
+      } else if (position===tokenO) {
+        checkWinningCombo(tokenO);
+      }  
 
       // console.log ("--- CHECK VALUES AT END OF LOOP ---")
       console.log(`token = ${token}`);
@@ -132,7 +127,6 @@ tile.forEach((move) => {
         isGameOver = true;
         console.log(`Is Game Over? = ${isGameOver}`);
         console.log("Proceed to last move check");
-        tiles.innerHTML = `<button disabled>`;
 
         if (
           start.addEventListener("click", (event) => {
