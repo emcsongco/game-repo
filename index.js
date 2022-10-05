@@ -17,16 +17,16 @@ const t9 = document.getElementById("3-3");
 
 console.log("Initialize...");
 // -----------------------------------------------------
-
+const tokenX = `<i class="fa-solid fa-x"></i>`;
+const tokenO = `<i class="fa-solid fa-o"></i>`;
 let lastMove = "";
 let movesLeft = 9;
 let p1MovesLeft = 5;
 let p2MovesLeft = 4;
-let token = `<i class="fa-solid fa-x"></i>`
+let token = tokenX
 let position = "";
 let isGameOver = false;
-const tokenX = `<i class="fa-solid fa-x"></i>`
-const tokenO = `<i class="fa-solid fa-o"></i>`
+
 
 console.log("Start Game Play");
 // -----------------------------------------------------
@@ -63,14 +63,14 @@ tile.forEach((move) => {
     // CHECK TOKEN MOVEMENTS THROUGHOUT GAME PLAY
     // -----------------------------------------------------
 
-      if (token === `<i class="fa-solid fa-x"></i>`) {
+      if (token === tokenX) {
         console.log("Check # of X moves left...");
         p1MovesLeft--;
-        token = `<i class="fa-solid fa-o"></i>`;
+        token = tokenO;
       } else {
         console.log("Check O of moves left...");
         p2MovesLeft--;
-        token = `<i class="fa-solid fa-x"></i>`;
+        token = tokenX;
       }
 
       // RESTART BOARD AT ANY TIME
@@ -83,7 +83,7 @@ tile.forEach((move) => {
           movesLeft = 9;
           p1MovesLeft = 5;
           p2MovesLeft = 4;
-          token = `<i class="fa-solid fa-x"></i>`;
+          token = tokenX;
           position = "";
           isGameOver = false;
           t1.innerHTML = `<i class="empty"></i>`;
@@ -104,71 +104,71 @@ tile.forEach((move) => {
 
       if (movesLeft < 5) {
         if (
-          (t1.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t2.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t3.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t1.innerHTML === `<i class="fa-solid fa-o"></i>` && t2.innerHTML === `<i class="fa-solid fa-o"></i>` && t3.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t1.innerHTML === tokenX &&
+            t2.innerHTML === tokenX &&
+            t3.innerHTML === tokenX) ||
+          (t1.innerHTML === tokenO && t2.innerHTML === tokenO && t3.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 1-2-3!");
         }
         if (
-          (t4.innerHTML === `<i class="fa-solid fa-x"></i>` && t5.innerHTML === `<i class="fa-solid fa-x"></i>` && t6.innerHTML === `<i class="fa-solid fa-x"></i>`)||
-          (t4.innerHTML === `<i class="fa-solid fa-o"></i>` && t5.innerHTML === `<i class="fa-solid fa-o"></i>` && t6.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t4.innerHTML === tokenX && t5.innerHTML === tokenX && t6.innerHTML === tokenX)||
+          (t4.innerHTML === tokenO && t5.innerHTML === tokenO && t6.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 4-5-6!");
         }
         if (
-          (t7.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t8.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t9.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t7.innerHTML === `<i class="fa-solid fa-o"></i>` && t8.innerHTML === `<i class="fa-solid fa-o"></i>` && t9.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t7.innerHTML === tokenX &&
+            t8.innerHTML === tokenX &&
+            t9.innerHTML === tokenX) ||
+          (t7.innerHTML === tokenO && t8.innerHTML === tokenO && t9.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 7-8-9!");
         }
         if (
-          (t1.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t4.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t7.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t1.innerHTML === `<i class="fa-solid fa-o"></i>` && t4.innerHTML === `<i class="fa-solid fa-o"></i>` && t7.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t1.innerHTML === tokenX &&
+            t4.innerHTML === tokenX &&
+            t7.innerHTML === tokenX) ||
+          (t1.innerHTML === tokenO && t4.innerHTML === tokenO && t7.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 1-4-7!");
         }
         if (
-          (t2.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t5.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t8.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t2.innerHTML === `<i class="fa-solid fa-o"></i>` && t5.innerHTML === `<i class="fa-solid fa-o"></i>` && t8.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t2.innerHTML === tokenX &&
+            t5.innerHTML === tokenX &&
+            t8.innerHTML === tokenX) ||
+          (t2.innerHTML === tokenO && t5.innerHTML === tokenO && t8.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 2-5-8!");
         }
         if (
-          (t3.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t6.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t9.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t3.innerHTML === `<i class="fa-solid fa-o"></i>` && t6.innerHTML === `<i class="fa-solid fa-o"></i>` && t9.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t3.innerHTML === tokenX &&
+            t6.innerHTML === tokenX &&
+            t9.innerHTML === tokenX) ||
+          (t3.innerHTML === tokenO && t6.innerHTML === tokenO && t9.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 3-6-9!");
         }
         if (
-          (t1.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t5.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t9.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t1.innerHTML === `<i class="fa-solid fa-o"></i>` && t5.innerHTML === `<i class="fa-solid fa-o"></i>` && t9.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t1.innerHTML === tokenX &&
+            t5.innerHTML === tokenX &&
+            t9.innerHTML === tokenX) ||
+          (t1.innerHTML === tokenO && t5.innerHTML === tokenO && t9.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 1-5-9!");
         }
         if (
-          (t3.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t5.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t7.innerHTML === `<i class="fa-solid fa-x"></i>`) ||
-          (t3.innerHTML === `<i class="fa-solid fa-o"></i>` && t5.innerHTML === `<i class="fa-solid fa-o"></i>` && t7.innerHTML === `<i class="fa-solid fa-o"></i>`)
+          (t3.innerHTML === tokenX &&
+            t5.innerHTML === tokenX &&
+            t7.innerHTML === tokenX) ||
+          (t3.innerHTML === tokenO && t5.innerHTML === tokenO && t7.innerHTML === tokenO)
         ) {
           tiles.innerHTML = `<button disabled>`;
           alert("We have a winner in position 3-5-7!");
@@ -191,7 +191,6 @@ tile.forEach((move) => {
         isGameOver = true;
         console.log(`Is Game Over? = ${isGameOver}`);
         console.log("Proceed to last move check");
-        start.innerHTML = "Play again?";
         tiles.innerHTML = `<button disabled>`;
 
         if (
@@ -202,7 +201,7 @@ tile.forEach((move) => {
             movesLeft = 9;
             p1MovesLeft = 5;
             p2MovesLeft = 4;
-            token = `<i class="fa-solid fa-x"></i>`;
+            token = tokenX;
             position = "";
             isGameOver = false;
             t1.innerHTML = `<i class="empty"></i>`;
