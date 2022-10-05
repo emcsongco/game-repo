@@ -38,25 +38,10 @@ console.log(`p1movesLeft = ${p1MovesLeft}`);
 console.log(`p2MovesLeft = ${p2MovesLeft}`);
 console.log(`token = ${token}`);
 
-const getRandomInt = (min,max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-}
-// console.log (getRandomInt(1,10));
-
 choiceBox.innerHTML = `
   <button class="player-container__option">Player ${tokenX}</button>
   <button class="player-container__option">Player ${tokenO}</button>
 `
-
-
-// const btn = document.querySelector(".player-container__option");
-
-// btn.addEventListener("click", (event) => {
-//   // start.innerHTML=Text.blink;
-// });
-
 
 console.log("Game in progress...");
 // -----------------------------------------------------
@@ -64,7 +49,6 @@ console.log("Game in progress...");
 tile.forEach((move) => {
   move.addEventListener("click", (event) => {
     event.preventDefault();
-    start.innerHTML = "Re-start game?";
     position = move.innerHTML;
 
     // CHECK MOVES LEFT THROUGHOUT GAME PLAY
@@ -88,8 +72,6 @@ tile.forEach((move) => {
         p2MovesLeft--;
         token = `<i class="fa-solid fa-x"></i>`;
       }
-      // document.getElementById("demo").innerHTML = Math.floor(Math.random() * 10);
-      getRandomInt(1,9);
 
       // RESTART BOARD AT ANY TIME
       // -----------------------------------------------------
@@ -131,9 +113,7 @@ tile.forEach((move) => {
           alert("We have a winner in position 1-2-3!");
         }
         if (
-          (t4.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t5.innerHTML === `<i class="fa-solid fa-x"></i>` &&
-            t6.innerText == `<i class="fa-solid fa-x"></i>`) ||
+          (t4.innerHTML === `<i class="fa-solid fa-x"></i>` && t5.innerHTML === `<i class="fa-solid fa-x"></i>` && t6.innerHTML === `<i class="fa-solid fa-x"></i>`)||
           (t4.innerHTML === `<i class="fa-solid fa-o"></i>` && t5.innerHTML === `<i class="fa-solid fa-o"></i>` && t6.innerHTML === `<i class="fa-solid fa-o"></i>`)
         ) {
           tiles.innerHTML = `<button disabled>`;
