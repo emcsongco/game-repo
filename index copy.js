@@ -1,10 +1,10 @@
 console.log("Grab elements...");
-    // const tiles = document.querySelectorAll(".container__tiles");
+    const tiles = document.querySelectorAll(".tiles");
     const start = document.querySelector(".start-button");
     const tile = document.querySelectorAll(".tile");
     const choiceBox = document.querySelector(".player-container");
     const message = document.querySelector("#message");
-    // const result = document.querySelector("#result");
+
 
     const t1 = document.getElementById("1-1");
     const t2 = document.getElementById("1-2");
@@ -16,10 +16,10 @@ console.log("Grab elements...");
     const t8 = document.getElementById("3-2");
     const t9 = document.getElementById("3-3");
 
+
     console.log("Initialize...");
     const tokenX = `<i class="fa-solid fa-x"></i>`;
     const tokenO = `<i class="fa-solid fa-o"></i>`;
-    const emptyCell = `<i class="empty"></i>`;
     let lastMove = "";
     let movesLeft = 9;
     let p1MovesLeft = 5;
@@ -27,8 +27,8 @@ console.log("Grab elements...");
     let token = tokenX
     let position = "";
     let isGameOver = false;
-    let status = "";    
-    const board = ["","","","","","","","",""]
+    let status = "";
+    
 
 console.log("Start Game Play");
     console.log(`position = ${position}`);
@@ -46,19 +46,17 @@ const initializeBoard = () => {
     token = tokenX;
     position = "";
     isGameOver = false;
-    message.innerText = "Player X moves first";
-    t1.innerHTML = emptyCell;
-    t2.innerHTML = emptyCell;
-    t3.innerHTML = emptyCell;
-    t4.innerHTML = emptyCell;
-    t5.innerHTML = emptyCell;
-    t6.innerHTML = emptyCell;
-    t7.innerHTML = emptyCell;
-    t8.innerHTML = emptyCell;
-    t9.innerHTML = emptyCell;
+    message.innerText = "***";
+    t1.innerHTML = `<i class="empty"></i>`;
+    t2.innerHTML = `<i class="empty"></i>`;
+    t3.innerHTML = `<i class="empty"></i>`;
+    t4.innerHTML = `<i class="empty"></i>`;
+    t5.innerHTML = `<i class="empty"></i>`;
+    t6.innerHTML = `<i class="empty"></i>`;
+    t7.innerHTML = `<i class="empty"></i>`;
+    t8.innerHTML = `<i class="empty"></i>`;
+    t9.innerHTML = `<i class="empty"></i>`;
 }
-
-
 
 const checkWinningCombo = (position) => {
   let status = "";
@@ -75,17 +73,17 @@ const checkWinningCombo = (position) => {
       status = "Player X Wins!";
       message.innerText = status;
       console.log (status);
-      // alert ("Player X Wins!")
+      alert ("Player X Wins!")
     } else if (position === tokenO) {
-      status = "Player O Wins!";
+      status = "--Player O Wins!";
       message.innerText = status;
       console.log (status);
-      // alert ("Player O Wins!")
+      alert ("--Player O Wins!")
     } else {
       status = "It's a Tie!";
       message.innerText = status;
       console.log (status);
-      // alert ("--It's a Tie!")
+      alert ("--It's a Tie!")
     }
     isGameOver = true;
     return (status);
@@ -94,13 +92,6 @@ const checkWinningCombo = (position) => {
 
 console.log("Ready to play!");
 // -----------------------------------------------------
-// RESTART BOARD AT ANY TIME
-if (
-  start.addEventListener("click", (event) => {
-    console.log("Re-starting board...");
-    initializeBoard();
-  })
-);
 tile.forEach((move) => {
   move.addEventListener("click", (event) => {
     event.preventDefault();
@@ -114,23 +105,31 @@ tile.forEach((move) => {
       position = move.innerHTML;
 
     // CHECK TOKEN MOVEMENTS THROUGHOUT GAME PLAY
-      if (token === tokenX && !isGameOver) {
+      if (token === tokenX) {
         console.log("Check # of X moves left...");
         p1MovesLeft--;
-        message.innerHTML = "Player O's turn";
         token = tokenO;
-      } else if (token === tokenO && !isGameOver) {
+      } else {
         console.log("Check O of moves left...");
         p2MovesLeft--;
-        message.innerHTML = "Player X's turn";
         token = tokenX;
       }
 
+      // RESTART BOARD AT ANY TIME
+      if (
+        start.addEventListener("click", (event) => {
+          console.log("Re-starting board...");
+          initializeBoard();
+        })
+      );
+
       // CHECK MOVES AGAINST WINNING COMBINATIONS
-      if (position===tokenX && !isGameOver) {
+      if (position===tokenX) {
         checkWinningCombo(tokenX);
-      } else if (position===tokenO && !isGameOver) {
+        // message.innerHTML = "Player X Wins";
+      } else if (position===tokenO) {
         checkWinningCombo(tokenO)
+        // message.innerHTML = "Player O Wins!";
       } 
 
       // console.log ("--- CHECK VALUES AT END OF LOOP ---")
@@ -151,19 +150,19 @@ tile.forEach((move) => {
       console.log(t7.innerHTML);
       console.log(t8.innerHTML);
       console.log(t9.innerHTML);
-
+      
       // CHECK IF GAME IS OVER, GIVE OPTION TO PLAY AGAIN
       if (movesLeft == 0 && p1MovesLeft == 0 && p2MovesLeft == 0) {
         isGameOver = true;
         console.log(`Is Game Over? = ${isGameOver}`);
         console.log("Proceed to last move check");
-        message.innerHTML = "It's a Tie!"
         if (start.addEventListener("click", (event) => {
             console.log("Re-setting board...");
             initializeBoard();
           })
         );
       }
+  
     } 
   });
 });
