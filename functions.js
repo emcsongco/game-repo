@@ -78,3 +78,13 @@ console.log (cells);
 
 
 
+let gridArray = [].push("t1.innerHTML","t2.innerHTML","t3.innerHTML","t4.innerHTML","t5.innerHTML","t6.innerHTML","t7.innerHTML","t8.innerHTML","t9.innerHTML");
+console.log (gridArray);
+
+cells = gridArray.map((element, index) => {
+  return element + index;
+});
+
+console.log(newGridArr);
+console.log(gridArray);
+
