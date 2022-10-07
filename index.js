@@ -93,27 +93,46 @@ console.log("Ready to play!");
 // RESTART BOARD AT ANY TIME
 if (
   start.addEventListener("click", (event) => {
+    console.log ("============================");
     console.log("Re-starting board...");
+    event.preventDefault();
     initializeBoard();
   })
 );
+
+// CHECK IF LAST MOVE OR GAME OVER
+if (movesLeft === 0 && p1MovesLeft === 0 && p2MovesLeft === 0) {
+  isGameOver = true;
+  console.log(`Is Game Over? = ${isGameOver}`);
+  console.log("Proceed to last move check");
+}
+
 tile.forEach((move) => {
   move.addEventListener("click", (event) => {
     event.preventDefault();
+    console.log ("============================");
     position = move.innerHTML;
+    console.log(`position = ${position}`);
+    console.log (`movesLeft = ${movesLeft}`);
 
     // CHECK MOVES LEFT THROUGHOUT GAME PLAY
     if (movesLeft > 0 && !isGameOver) {
       console.log("Check # of moves left...");
       move.innerHTML = token;
+      console.log (`move.innerHTML = ${move.innerHTML}`);
       movesLeft--;
+      console.log (`movesLeft = ${movesLeft}`);
       position = move.innerHTML;
-      console.log(tile);
+      console.log(`position = ${position}`);
 
     // CHECK TOKEN MOVEMENTS THROUGHOUT GAME PLAY
+      console.log(`Is Game Over? = ${isGameOver}`);
       if (token === tokenX && !isGameOver) {
+        console.log(`token = ${token}`);
         console.log("Check # of X moves left...");
+        console.log (`p1MovesLeft = ${p1MovesLeft}`);
         p1MovesLeft--;
+        console.log (`p1MovesLeft = ${p1MovesLeft}`);
         if (p1MovesLeft ===0) {
           message.innerHTML = "No Winner!";
         } else {  
@@ -122,10 +141,9 @@ tile.forEach((move) => {
         }
       } else if (token === tokenO && !isGameOver) {
         console.log("Check # of O moves left...");
+        console.log (`p2MovesLeft = ${p2MovesLeft}`);
         p2MovesLeft--;
-        if (p1MovesLeft === 0) {
-          isGameOver = true;
-        }
+        console.log (`p2MovesLeft = ${p2MovesLeft}`);
         message.innerHTML = "Player X's turn";
         token = tokenX;
       } else if (isGameOver) {
@@ -133,6 +151,7 @@ tile.forEach((move) => {
       }
 
       // CHECK MOVES AGAINST WINNING COMBINATIONS
+      console.log(`Is Game Over? = ${isGameOver}`);
       if (position===tokenX && !isGameOver) {
         checkWinningCombo(tokenX);
       } else if (position===tokenO && !isGameOver) {
@@ -140,14 +159,8 @@ tile.forEach((move) => {
       } 
 
       // console.log ("--- CHECK VALUES AT END OF LOOP ---")
-      console.log(`token = ${token}`);
+      
       console.log(`lastMove = ${lastMove}`);
-      console.log(`position = ${position}`);
-      console.log (`movesLeft = ${movesLeft}`);
-      console.log (`p1MovesLeft = ${p1MovesLeft}`);
-      console.log (`p2MovesLeft = ${p2MovesLeft}`);
-      console.log (`move.innerHTML = ${move.innerHTML}`);
-      console.log(`Is Game Over? = ${isGameOver}`);
       console.log(t1.innerHTML);
       console.log(t2.innerHTML);
       console.log(t3.innerHTML);
@@ -157,24 +170,6 @@ tile.forEach((move) => {
       console.log(t7.innerHTML);
       console.log(t8.innerHTML);
       console.log(t9.innerHTML);
-
-      // CHECK IF GAME IS OVER, GIVE OPTION TO PLAY AGAIN
-      if (movesLeft === 0 && p1MovesLeft === 0 && p2MovesLeft === 0) {
-        isGameOver = true;
-        console.log(`Is Game Over? = ${isGameOver}`);
-        console.log("Proceed to last move check");
-        if (position===tokenX) {
-          checkWinningCombo(tokenX)
-        }else{ 
-          message.innerHTML = "It's a Tie!"
-        }
-
-        if (start.addEventListener("click", (event) => {
-            console.log("Re-setting board...");
-            initializeBoard();
-          })
-        );
-      }
     } 
   });
 });
