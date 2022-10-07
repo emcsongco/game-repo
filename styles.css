@@ -29,7 +29,7 @@ h1 {
 }
 .player-container .player-container__option:hover {
   background-color: #0E273C;
-  transform: scale(1);
+  transform: scale(1.07);
 }
 .player-container .player-container__option:active {
   color: yellowgreen;
@@ -39,6 +39,7 @@ h1 {
   width: 350px;
   margin: auto;
   padding: 5px;
+  position: relative;
 }
 .container__tiles {
   background-color: #A167A5;
@@ -74,27 +75,15 @@ h1 {
   margin: 5px;
   box-shadow: 4px 4px #A167A5;
   border-radius: 3px;
-  transition: transform 0.1s ease-in-out;
+  transform: scale(1.02);
 }
 
-.result {
-  position: absolute;
-  z-index: 100;
-  top: -5px;
-  left: -5px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  color: #000000;
-  font-size: 2.5rem;
-  font-weight: bold;
-  opacity: 0.7;
-  width: 310px;
-  height: 310px;
+#result {
+  border: 2px dashed green;
 }
 
-.message {
+#message {
   background-color: aquamarine;
   padding: 5px;
+  font-size: 30px;
 }/*# sourceMappingURL=styles.css.map */

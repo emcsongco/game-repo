@@ -23,15 +23,15 @@ let cells = [];
 // const t8 = document.getElementById("3-2");
 // const t9 = document.getElementById("3-3");
 
-  let t1 = `<i class="fa-solid fa-o"></i>`;
-  let t2 = `<i class="empty"></i>`;
-  let t3 = `<i class="fa-solid fa-x"></i>`;
-  let t4 = `<i class="empty"></i>`;
-  let t5 = `<i class="empty"></i>`;
-  let t6 = `<i class="empty"></i>`;
-  let t7 = `<i class="empty"></i>`;
-  let t8 = `<i class="empty"></i>`;
-  let t9 = `<i class="empty"></i>`;
+//   let t1 = `<i class="fa-solid fa-o"></i>`;
+//   let t2 = `<i class="empty"></i>`;
+//   let t3 = `<i class="fa-solid fa-x"></i>`;
+//   let t4 = `<i class="empty"></i>`;
+//   let t5 = `<i class="empty"></i>`;
+//   let t6 = `<i class="empty"></i>`;
+//   let t7 = `<i class="empty"></i>`;
+//   let t8 = `<i class="empty"></i>`;
+//   let t9 = `<i class="empty"></i>`;
 
 const moveToRandomCell = () => {
     if (t1 !=`<i class="empty"></i>`) {
