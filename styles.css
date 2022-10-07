@@ -4,44 +4,82 @@
   box-sizing: border-box;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
-}
-
-main {
-  background-image: url("./images/bkpic.jpg");
+  background-color: #E8D7F1;
 }
 
 h1 {
   font-family: Arial, Helvetica, sans-serif;
   color: #0E273C;
-  padding: 25px;
+  padding: 10px;
 }
 
-.player-container {
-  background-color: aquamarine;
-  padding: 15px;
-}
 .player-container .player-container__option {
-  background-color: #4A306D;
-  color: whitesmoke;
-  width: 125px;
-  border-radius: 3px;
-  padding: 5px;
+  border: none;
+  width: 150px;
 }
-.player-container .player-container__option:hover {
+.player-container .player-container__option__item {
+  color: #0E273C;
+}
+.player-container img {
   background-color: #0E273C;
-  transform: scale(1.07);
-}
-.player-container .player-container__option:active {
-  color: yellowgreen;
+  height: 75px;
+  width: 75px;
+  border-radius: 10px;
 }
 
-.container {
+.start-button, .player-container__option {
+  cursor: pointer;
+  position: relative;
+  margin: 10px;
+  padding: 5px;
+  font-size: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: all 1s;
+}
+.start-button:after, .start-button:before, .player-container__option:after, .player-container__option:before {
+  content: " ";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 0px solid #fff;
+  transition: all 1s;
+}
+.start-button:after, .player-container__option:after {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid #0E273C;
+  border-left: 2px solid #0E273C;
+}
+.start-button:before, .player-container__option:before {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid #0E273C;
+  border-right: 2px solid #0E273C;
+}
+.start-button:hover, .player-container__option:hover {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.start-button:hover:before, .start-button:hover:after, .player-container__option:hover:before, .player-container__option:hover:after {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  background-image: url("./images/Sunset-Dreaming-Pastel-Wallpaper.webp");
+  border: 1px solid red;
+  height: 75vh;
+}
+main .container {
   width: 350px;
   margin: auto;
+  justify-content: center;
   padding: 5px;
-  position: relative;
 }
-.container__tiles {
+main .container__tiles {
   background-color: #A167A5;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -53,29 +91,53 @@ h1 {
   padding: 5px;
   border: 1px solid #4A306D;
 }
-.container__tiles div {
+main .container__tiles div {
   box-shadow: 2px 2px #0E273C;
   background-color: #E8D7F1;
   height: 110px;
 }
-.container__tiles .tile {
-  color: #A167A5;
-  font-size: 80px;
+main .container__tiles .tile {
+  opacity: 1;
+  cursor: pointer;
+  position: relative;
+  padding: 15px 3px;
+  font-size: 65px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: all 1s;
 }
-.container__tiles .tile i {
-  text-shadow: 4px 4px #0E273C;
-  padding: 10px;
+main .container__tiles .tile:after, main .container__tiles .tile:before {
+  content: " ";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 0px solid #fff;
+  transition: all 1s;
 }
-.container .start-button {
-  background-color: #E8D7F1;
-  border: 1px solid #0E273C;
-  padding: 10px;
-  font-size: 20px;
-  width: 330px;
-  margin: 5px;
-  box-shadow: 4px 4px #A167A5;
-  border-radius: 3px;
-  transform: scale(1.02);
+main .container__tiles .tile:after {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid #0E273C;
+  border-left: 2px solid #0E273C;
+}
+main .container__tiles .tile:before {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid #0E273C;
+  border-right: 2px solid #0E273C;
+}
+main .container__tiles .tile:hover {
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+main .container__tiles .tile:hover:before, main .container__tiles .tile:hover:after {
+  width: 100%;
+  height: 100%;
+}
+main .container__tiles i {
+  color: #4A306D;
+  text-shadow: 4px 4px aquamarine;
+  padding: 5px;
 }
 
 #result {
@@ -84,6 +146,7 @@ h1 {
 
 #message {
   background-color: aquamarine;
+  color: #0E273C;
   padding: 5px;
   font-size: 30px;
 }/*# sourceMappingURL=styles.css.map */

@@ -1,10 +1,9 @@
 $font-default:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 $font-header: Arial, Helvetica, sans-serif;
-$color-background: #A167A5;
-$color-tiles-border: #4A306D;
-$color-tile-font: #A167A5;
-$color-shadow: #0E273C;
-$color-button: #E8D7F1;
+$color-pink: #A167A5;
+$color-purple: #4A306D;
+$color-bluegreen: #0E273C;
+$color-lightpink: #E8D7F1;
 
 * {
     margin:0;
@@ -12,86 +11,154 @@ $color-button: #E8D7F1;
     box-sizing: border-box;
     font-family: $font-default;
     text-align: center;
-}
-main {
-    background-image: url("./images/bkpic.jpg");
-    
+    background-color: #E8D7F1;
+    // background-image: url("./images/Sunset-Dreaming-Pastel-Wallpaper.webp");
 }
 
 h1 {
     font-family: $font-header;
-    color: $color-shadow;
-    padding: 25px;
+    color: $color-bluegreen;
+    padding: 10px;
 }
 
 .player-container {
-    background-color: aquamarine;
-    padding: 15px;
-
     .player-container__option {
-        background-color:#4A306D;
-        color: whitesmoke;
-        width: 125px;
-        border-radius: 3px;
-        padding: 5px;
+        border:none;
+        width: 150px;
     }
 
-    .player-container__option:hover {
-        background-color:#0E273C;
-        transform: scale( 1.07 );
+    .player-container__option__item {
+        color: $color-bluegreen;
     }
 
-    .player-container__option:active {
-        color: yellowgreen;
+    img {
+        background-color: $color-bluegreen;
+        height:75px;
+        width:75px;
+        border-radius: 10px;
     }
 }
-  
-.container {
-    width:350px;
-    margin:auto;
-    padding:5px;
+
+.start-button, .player-container__option {
+    cursor:pointer;
     position:relative;
-    &__tiles {
-        background-color: $color-background;
-        display:grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: repeat(3,1fr);
-        gap:5px;
-        box-shadow:2px 2px $color-shadow;
-        border-radius: 3px;
-        width:auto;
-        padding: 5px;
-        border: 1px solid $color-tiles-border;
+    margin:10px;
+    padding:5px;
+    font-size:20px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    transition:all 1s;
 
-        div {
-            box-shadow:2px 2px $color-shadow;
-            background-color: $color-button;
-            height:110px;
+    &:after,&:before{
+        content:" ";
+        width:10px;
+        height:10px;
+        position:absolute;
+        border :0px solid #fff;
+        transition:all 1s;
+    }
+    &:after{
+        top:-1px;
+        left:-1px;
+        border-top:2px solid $color-bluegreen;
+        border-left:2px solid $color-bluegreen;
+    }
+    &:before{
+        bottom:-1px;
+        right:-1px;
+        border-bottom:2px solid $color-bluegreen;
+        border-right:2px solid $color-bluegreen;
+    }
+    &:hover{
+        border-top-right-radius:0px;
+        border-bottom-left-radius:0px;
+        background:rgba(0,0,0,.5);
+        color:white;
+
+        &:before,&:after{
+            width:100%;
+            height:100%;
         }
+    }
+}
 
-        .tile {
-            color:$color-tile-font;
-            font-size: 80px;
+main {
+    background-image: url("./images/Sunset-Dreaming-Pastel-Wallpaper.webp");
+    border:1px solid red;
+    height: 75vh;
 
-            i {
-                text-shadow: 4px 4px $color-shadow;
-                padding: 10px;
+    .container {
+        width:350px;
+        margin:auto;
+        justify-content: center;
+        padding:5px;
+        // position:relative;
+        &__tiles {
+            background-color: $color-pink;
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,1fr);
+            gap:5px;
+            box-shadow:2px 2px $color-bluegreen;
+            border-radius: 3px;
+            width:auto;
+            padding: 5px;
+            border: 1px solid $color-purple;
+
+            div {
+                box-shadow:2px 2px $color-bluegreen;
+                background-color: $color-lightpink;
+                height:110px;
+            }
+
+            .tile{
+                opacity: 1;
+                cursor:pointer;
+                position:relative;
+                padding:15px 3px;
+                font-size:65px;
+                border-top-right-radius:10px;
+                border-bottom-left-radius:10px;
+                transition:all 1s;
+                &:after,&:before{
+                    content:" ";
+                    width:10px;
+                    height:10px;
+                    position:absolute;
+                    border :0px solid #fff;
+                    transition:all 1s;
+                    }
+                &:after{
+                    top:-1px;
+                    left:-1px;
+                    border-top:2px solid $color-bluegreen;
+                    border-left:2px solid $color-bluegreen;
+                }
+                &:before{
+                    bottom:-1px;
+                    right:-1px;
+                    border-bottom:2px solid $color-bluegreen;
+                    border-right:2px solid $color-bluegreen;
+                }
+                &:hover{
+                    border-top-right-radius:0px;
+                    border-bottom-left-radius:0px;
+                    // background:rgba(0,0,0,.5);
+                    // color:white;
+                    &:before,&:after{
+                    width:100%;
+                    height:100%;
+                    }
+                }
+            }
+
+                i {
+                    color: $color-purple;
+                    text-shadow: 4px 4px aquamarine;
+                    padding: 5px;
+                }
             }
         }
-    }
-
-    .start-button {
-        background-color: $color-button;
-        border: 1px solid $color-shadow;
-        padding:10px;
-        font-size: 20px;
-        width: 330px;
-        margin:5px;
-        box-shadow: 4px 4px $color-background;
-        border-radius: 3px;
-        // transition: transform 0.1s ease-in-out;
-        transform: scale( 1.02 );
-    }
 }
 #result {
     border: 2px dashed green;
@@ -99,7 +166,8 @@ h1 {
 
 #message {
         background-color: aquamarine;
+        color: $color-bluegreen;
         padding: 5px;
         font-size: 30px;
     }
-
+    

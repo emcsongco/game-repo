@@ -1,5 +1,5 @@
 console.log("Grab elements...");
-    const tiles = document.querySelectorAll(".container__tiles");
+    // const tiles = document.querySelectorAll(".container__tiles");
     const start = document.querySelector(".start-button");
     const tile = document.querySelectorAll(".tile");
     const choiceBox = document.querySelector(".player-container");
@@ -27,7 +27,7 @@ console.log("Grab elements...");
     let position = "";
     let isGameOver = false;
     let status = "";    
-    const board = ["","","","","","","","",""]
+    // const board = ["","","","","","","","",""]
 
 console.log("Start Game Play");
     console.log(`position = ${position}`);
@@ -36,6 +36,8 @@ console.log("Start Game Play");
     console.log(`p1movesLeft = ${p1MovesLeft}`);
     console.log(`p2MovesLeft = ${p2MovesLeft}`);
     console.log(`token = ${token}`);
+
+
 
 const initializeBoard = () => {
     lastMove = "";
@@ -56,6 +58,8 @@ const initializeBoard = () => {
     t8.innerHTML = emptyCell;
     t9.innerHTML = emptyCell;
 }
+
+
 
 const checkWinningCombo = (position) => {
   let status = "";
@@ -87,6 +91,8 @@ const checkWinningCombo = (position) => {
     return (status);
   }
 }
+
+
 
 console.log("Ready to play!");
 // -----------------------------------------------------
