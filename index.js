@@ -2,7 +2,7 @@ console.log("Grab elements...");
     // const tiles = document.querySelectorAll(".container__tiles");
     const start = document.querySelector(".start-button");
     const tile = document.querySelectorAll(".tile");
-    const choiceBox = document.querySelector(".player-container");
+    // const choiceBox = document.querySelector(".player-container");
     const message = document.querySelector("#message");
 
     const t1 = document.getElementById("1-1");
@@ -16,8 +16,10 @@ console.log("Grab elements...");
     const t9 = document.getElementById("3-3");
 
     console.log("Initialize...");
-    const tokenX = `<i class="fa-solid fa-x"></i>`;
-    const tokenO = `<i class="fa-solid fa-o"></i>`;
+    // const tokenX = `<i class="fa-solid fa-x"></i>`;
+    // const tokenO = `<i class="fa-solid fa-o"></i>`;
+    const tokenX = `<img id="player-one" src="./images/sf.gif" alt="Player X">`;
+    const tokenO = `<img id="player-two" src="./images/200.gif" alt="Player O">`;
     const emptyCell = `<i class="empty"></i>`;
     let lastMove = "";
     let movesLeft = 9;
@@ -72,14 +74,15 @@ const checkWinningCombo = (position) => {
     (t3.innerHTML === position && t6.innerHTML === position && t9.innerHTML === position) ||
     (t3.innerHTML === position && t5.innerHTML === position && t7.innerHTML === position) ||
     (t1.innerHTML === position && t5.innerHTML === position && t9.innerHTML === position))
-  ) { if (position === tokenX) {
-      status = "Player X Wins!";
-      message.innerText = status;
+  ) { isGameOver = true;
+    if (position === tokenX) {
+      status = `Player X ${tokenX} Wins!`;
+      message.innerHTML = status;
       console.log (status);
       // alert ("Player X Wins!")
     } else if (position === tokenO) {
-      status = "Player O Wins!";
-      message.innerText = status;
+      status = `Player O ${tokenO} Wins!`;
+      message.innerHTML = status;
       console.log (status);
       // alert ("Player O Wins!")
     } else {
@@ -87,7 +90,7 @@ const checkWinningCombo = (position) => {
       message.innerText = status;
       console.log (status);
     }
-    isGameOver = true;
+    // isGameOver = true;
     return (status);
   }
 }
@@ -142,7 +145,7 @@ tile.forEach((move) => {
         if (p1MovesLeft ===0) {
           message.innerHTML = "No Winner!";
         } else {  
-          message.innerHTML = "Player O's turn";
+          message.innerHTML = `Player O's ${tokenO} turn`;
           token = tokenO;
         }
       } else if (token === tokenO && !isGameOver) {
@@ -150,7 +153,7 @@ tile.forEach((move) => {
         console.log (`p2MovesLeft = ${p2MovesLeft}`);
         p2MovesLeft--;
         console.log (`p2MovesLeft = ${p2MovesLeft}`);
-        message.innerHTML = "Player X's turn";
+        message.innerHTML = `Player X's ${tokenX} turn`;
         token = tokenX;
       } else if (isGameOver) {
         message.innerHTML = "No Winner!"

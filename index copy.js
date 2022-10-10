@@ -2,8 +2,11 @@ console.log("Grab elements...");
     // const tiles = document.querySelectorAll(".container__tiles");
     const start = document.querySelector(".start-button");
     const tile = document.querySelectorAll(".tile");
-    const choiceBox = document.querySelector(".player-container");
+    // const choiceBox = document.querySelector(".player-container");
     const message = document.querySelector("#message");
+    // const container = document.querySelector(".container");
+    // const playerOne = document.querySelector("#P1");
+    // const playerTwo = document.querySelector("#P2");
 
     const t1 = document.getElementById("1-1");
     const t2 = document.getElementById("1-2");
@@ -59,8 +62,6 @@ const initializeBoard = () => {
     t9.innerHTML = emptyCell;
 }
 
-
-
 const checkWinningCombo = (position) => {
   let status = "";
   if (
@@ -92,11 +93,33 @@ const checkWinningCombo = (position) => {
   }
 }
 
+// const displayMessage = () => {
+//   container.innerHTML = `
+//   <div class = "container__popup">Select your token [X/O]</div>
+//   `
+// }
 
+// if (
+//   playerOne.addEventListener("click", (event) => {
+//     console.log ("============================");
+//     event.preventDefault();
+//     playTheGame();
+//     return;
+//   })
+// );
+// if (
+//   playerTwo.addEventListener("click", (event) => {
+//     console.log ("============================");
+//     event.preventDefault();
+//     displayMessage();
+//     return;
+//   })
+// );
 
 console.log("Ready to play!");
 // -----------------------------------------------------
 // RESTART BOARD AT ANY TIME
+
 if (
   start.addEventListener("click", (event) => {
     console.log ("============================");
@@ -106,6 +129,7 @@ if (
   })
 );
 
+// const playTheGame = () => { 
 // CHECK IF LAST MOVE OR GAME OVER
 if (movesLeft === 0 && p1MovesLeft === 0 && p2MovesLeft === 0) {
   isGameOver = true;
@@ -177,5 +201,6 @@ tile.forEach((move) => {
       console.log(t8.innerHTML);
       console.log(t9.innerHTML);
     } 
-  });
-});
+  })
+})
+// }
